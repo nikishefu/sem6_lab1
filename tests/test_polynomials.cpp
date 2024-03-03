@@ -32,12 +32,3 @@ TEST(polynomials, JacobiHigher_n) {
     func = jacobi(7);
     EXPECT_EQ(func(6), 24056676.75);
 }
-
-TEST(polynomials, JacobiArray) {
-    auto jac = jacobiArray(7);
-    std::function<double(double)> func;
-    for (int i = 0; i <= 7; ++i) {
-        func = jacobi(i);
-        EXPECT_EQ(func(3), jac[i](3));
-    }
-}

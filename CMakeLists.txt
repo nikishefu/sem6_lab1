@@ -18,12 +18,14 @@ FetchContent_MakeAvailable(googletest)
 set(SOURCE_FILES
     src/quadrature.cpp
     src/polynomials.cpp
+    src/linSystems.cpp
 )
 
 set(HEADER_FILES
     include/numeric/quadrature.hpp
     include/numeric/funcOps.hpp
     include/numeric/polynomials.hpp
+    include/numeric/linSystems.hpp
 )
 
 add_library(numeric ${SOURCE_FILES} ${HEADER_FILES})
@@ -42,6 +44,7 @@ add_executable(tests
     tests/test_main.cpp
     tests/test_funcOps.cpp
     tests/test_polynomials.cpp
+    tests/test_linSystems.cpp
 )
 target_link_libraries(tests PRIVATE numeric gtest gtest_main)
 

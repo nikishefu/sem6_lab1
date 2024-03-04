@@ -20,6 +20,7 @@ set(SOURCE_FILES
     src/polynomials.cpp
     src/linSystems.cpp
     src/functional.cpp
+    src/solveDU.cpp
 )
 
 set(HEADER_FILES
@@ -28,6 +29,7 @@ set(HEADER_FILES
     include/numeric/polynomials.hpp
     include/numeric/linSystems.hpp
     include/numeric/functional.hpp
+    include/numeric/solveDU.hpp
 )
 
 add_library(numeric ${SOURCE_FILES} ${HEADER_FILES})
@@ -48,6 +50,7 @@ add_executable(tests
     tests/test_polynomials.cpp
     tests/test_linSystems.cpp
     tests/test_functional.cpp
+    tests/test_solveDU.cpp
 )
 target_link_libraries(tests PRIVATE numeric gtest gtest_main)
 

@@ -19,6 +19,7 @@ set(SOURCE_FILES
     src/quadrature.cpp
     src/polynomials.cpp
     src/linSystems.cpp
+    src/functional.cpp
 )
 
 set(HEADER_FILES
@@ -26,6 +27,7 @@ set(HEADER_FILES
     include/numeric/funcOps.hpp
     include/numeric/polynomials.hpp
     include/numeric/linSystems.hpp
+    include/numeric/functional.hpp
 )
 
 add_library(numeric ${SOURCE_FILES} ${HEADER_FILES})
@@ -45,6 +47,7 @@ add_executable(tests
     tests/test_funcOps.cpp
     tests/test_polynomials.cpp
     tests/test_linSystems.cpp
+    tests/test_functional.cpp
 )
 target_link_libraries(tests PRIVATE numeric gtest gtest_main)
 

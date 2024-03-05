@@ -52,6 +52,11 @@ TEST(polynomials, omega) {
 }
 
 TEST(polynomials, dOmega) {
-    auto func = dOmega(4, 1);
+    auto func = dOmega(4, 1, 1);
     EXPECT_EQ(func(4), -75115.0);
+}
+
+TEST(polynomials, dOmega2ndOrder) {
+    auto func = dOmega(2, 2, 2);
+    EXPECT_EQ(func(2), 2658.0);
 }

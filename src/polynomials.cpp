@@ -50,16 +50,21 @@ std::function<double(double)> omega(const unsigned int n, const unsigned int k) 
     return [n, k](double x){return std::pow((1-x*x), k) * jacobi(n, k)(x);};
 }
 
-std::function<double(double)> dOmega(const unsigned int n, const unsigned int k) {
-    return [n, k](double x){return -2 * (int)(n+1) * std::pow((1-x*x), k-1) * jacobi(n+1, k-1)(x);};
+std::function<double(double)> dOmega(const unsigned int n, const unsigned int k, const unsigned int order) {
+    int scale = std::pow(-2, order);
+    for (unsigned int i = n + 1; i <= n + order; ++i) {scale *= i;}
+
+    auto func = omega(n + order, k - order);
+
+    return [scale, func](double x){return scale * func(x);};
 }
 
 double bilinearForm(const unsigned int n1, const unsigned int k1,
                     const unsigned int n2, const unsigned int k2,
                     std::function<double(double)> p, std::function<double(double)> r)
 {
-    auto dOm1 = dOmega(n1, k1);
-    auto dOm2 = dOmega(n2, k2);
+    auto dOm1 = dOmega(n1, k1, 1);
+    auto dOm2 = dOmega(n2, k2, 1);
     auto om1 = omega(n1, k1);
     auto om2 = omega(n2, k2);
     return trapezoidal([p, r, dOm1, dOm2, om1, om2](double x){return p(x) * dOm1(x) * dOm2(x) +

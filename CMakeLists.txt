@@ -25,11 +25,11 @@ set(SOURCE_FILES
 
 set(HEADER_FILES
     include/numeric/quadrature.hpp
-    include/numeric/funcOps.hpp
     include/numeric/polynomials.hpp
     include/numeric/linSystems.hpp
     include/numeric/functional.hpp
     include/numeric/solveDU.hpp
+    include/numeric/derivative.hpp
 )
 
 add_library(numeric ${SOURCE_FILES} ${HEADER_FILES})
@@ -46,11 +46,11 @@ target_link_libraries(example1 PRIVATE numeric)
 enable_testing()
 add_executable(tests 
     tests/test_main.cpp
-    tests/test_funcOps.cpp
     tests/test_polynomials.cpp
     tests/test_linSystems.cpp
     tests/test_functional.cpp
     tests/test_solveDU.cpp
+    tests/test_derivative.cpp
 )
 target_link_libraries(tests PRIVATE numeric gtest gtest_main)
 

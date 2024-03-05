@@ -9,17 +9,17 @@ std::function<double(double)> jacobi(const unsigned int n, const unsigned int k)
 /* returns one of orthogonal polynomials (1-x^2)^k * P_n^(k,k)(x) */
 std::function<double(double)> omega(const unsigned int n, const unsigned int k);
 
-/* returns a derivative of omega(n, k) */
-std::function<double(double)> dOmega(const unsigned int n, const unsigned int k);
+/* returns a order-th derivative of omega(n, k) */
+std::function<double(double)> dOmega(const unsigned int n, const unsigned int k, const unsigned int order);
 
 /*
  *  [y, z] = (Ly, z), Ly = -(p(x)y')' + r(x)y
  *                           ^          ^
- *  The function is correct in specific case (more info in README).
+ *  The function is correct for a specific case (more info in README).
  *  Can only be applied to omega functions: [omega1(n1, k1), omega2(n2, k2)]
  *  The reason for taking n and k as an argument instead of std::function is that
  *  the form includes derivatives of input functions, therefore uses dOmega function.
- *  Numeric differentiation is much less resource-effecient than using dOmega function,
+ *  Numerical differentiation is much less resource-efficient than using dOmega function,
  *  considering that we only deal with omega functions.
  */
 double bilinearForm(const unsigned int n1, const unsigned int k1,

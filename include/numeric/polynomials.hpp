@@ -25,3 +25,5 @@ std::function<double(double)> dOmega(const unsigned int n, const unsigned int k,
 double bilinearForm(const unsigned int n1, const unsigned int k1,
                     const unsigned int n2, const unsigned int k2,
                     std::function<double(double)> p, std::function<double(double)> r);
+
+std::vector<double> chebyshevRoots(const unsigned int n);

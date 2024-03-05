@@ -70,3 +70,11 @@ double bilinearForm(const unsigned int n1, const unsigned int k1,
     return trapezoidal([p, r, dOm1, dOm2, om1, om2](double x){return p(x) * dOm1(x) * dOm2(x) +
                                                r(x) *  om1(x) *  om2(x);}, -1, 1, 1000);
 }
+
+std::vector<double> chebyshevRoots(const unsigned int n) {
+    std::vector<double> roots(n);
+    for (unsigned int i = 0; i < n; ++i) {
+        roots[i] = cos((2 * i + 1) * M_PI / (2 * n));
+    }
+    return roots;
+}

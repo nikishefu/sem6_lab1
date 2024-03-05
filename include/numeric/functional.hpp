@@ -5,4 +5,7 @@
 /* Dot product in L2 space */
 double dotProduct(std::function<double(double)> f1, std::function<double(double)> f2);
 
-double L(std::function<double(double)> y, std::function<double(double)> p, std::function<double(double)> r, double x);
+
+/* Ly = -(p(x)y')' + r(x)y, where y is omega(n, k)*/
+double L(std::function<double(double)> p, std::function<double(double)> r,
+         const unsigned int n, const unsigned int k, double x);

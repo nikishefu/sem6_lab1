@@ -21,6 +21,7 @@ set(SOURCE_FILES
     src/linSystems.cpp
     src/functional.cpp
     src/solveDU.cpp
+    src/derivative.cpp
 )
 
 set(HEADER_FILES
@@ -38,8 +39,8 @@ target_include_directories(numeric PUBLIC
     $<INSTALL_INTERFACE:include>
 )
 
-add_executable(example1 examples/main.cpp)
-target_link_libraries(example1 PRIVATE numeric)
+# add_executable(example1 examples/main.cpp)
+# target_link_libraries(example1 PRIVATE numeric)
 
 
 # Tests

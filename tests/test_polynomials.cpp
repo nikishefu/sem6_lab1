@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include "numeric/polynomials.hpp"
+#include "numeric/derivative.hpp"
 
 
 TEST(polynomials, JacobiBaseCases) {
@@ -59,4 +60,16 @@ TEST(polynomials, dOmega) {
 TEST(polynomials, dOmega2ndOrder) {
     auto func = dOmega(2, 2, 2);
     EXPECT_EQ(func(2), 2658.0);
+}
+
+TEST(polynomials, dOmegaAndNumDer) {
+    auto func = omega(4, 1);
+    auto dFunc = dOmega(4, 1, 1);
+    EXPECT_NEAR(numDerivative(func, 0.2), dFunc(0.2), 1e-5);
+}
+
+TEST(polynomials, dOmegaAndNumDer2ndOrder) {
+    auto func = dOmega(4, 1, 1);
+    auto dFunc = dOmega(4, 1, 2);
+    EXPECT_NEAR(numDerivative(func, 0.2), dFunc(0.2), 1e-5);
 }
